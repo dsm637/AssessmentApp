@@ -1,0 +1,6 @@
+@AssessmentApp_HostAddress = http://localhost:5285
+
+GET {{AssessmentApp_HostAddress}}/parks/
+Accept: application/json
+
+###

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp6", "ConsoleApp6\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{6E2E52D5-C7ED-4F3F-BCDD-A885C2393797}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication2", "WebApplication2\WebApplication2.csproj", "{A83A197B-43FD-406F-8520-3EE4B1F55407}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AssessmentApp", "WebApplication2\AssessmentApp.csproj", "{A83A197B-43FD-406F-8520-3EE4B1F55407}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

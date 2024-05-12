@@ -1,7 +1,7 @@
 
-using WebApplication2.Controllers;
+using Assessment.Controllers;
 
-namespace WebApplication2
+namespace Assessment
 {
     public class Program
     {
@@ -15,9 +15,13 @@ namespace WebApplication2
 
             builder.Services.AddHttpClient();
 
-            builder.Services.AddTransient<NpsClient>(sp => new NpsClient(
-                sp.GetRequiredService<IHttpClientFactory>().CreateClient("ParksClient"),
-                sp.GetRequiredService<ILogger<NpsClient>>()
+            builder.Services.AddTransient<NpsApiClient>(sp => new NpsApiClient(
+                sp.GetRequiredService<IHttpClientFactory>().CreateClient(),
+                sp.GetRequiredService<ILogger<NpsApiClient>>()
+                ));
+            builder.Services.AddTransient<GeoLocationClient>(sp => new GeoLocationClient(
+                sp.GetRequiredService<IHttpClientFactory>().CreateClient(),
+                sp.GetRequiredService<ILogger<GeoLocationClient>>()
                 ));
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
