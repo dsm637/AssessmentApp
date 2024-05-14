@@ -5,7 +5,7 @@
     /// </summary>
     public sealed class GeoLocationApiClient
     {
-        private const string ApiKey = "kG3mOf7nK1Mxc3enWfRwHA==hhP3032rTRGKEQwl";
+        private const string ApiKey = "SECRET";
         private readonly HttpClient _httpClient;
         private readonly ILogger<GeoLocationApiClient> _logger;
 

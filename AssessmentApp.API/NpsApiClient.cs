@@ -5,7 +5,7 @@
     /// </summary>
     public sealed class NpsApiClient
     {
-        private const string ApiKey = "zdNFN0io4o8airhiCo3j2rnyoULuEUAjfK6cLtPC";
+        private const string ApiKey = "SECRET";
         private readonly HttpClient _httpClient;
         private readonly ILogger<NpsApiClient> _logger;
 
