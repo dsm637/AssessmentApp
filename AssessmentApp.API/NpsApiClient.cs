@@ -5,7 +5,7 @@ namespace AssessmentApp.API
     /// <summary>
     /// A National Park System Api wrapper class.
     /// </summary>
-    public sealed class NpsApiClient
+    public sealed class NpsApiClient : INpsApiClient
     {
         private readonly string _apiKey;
         private readonly HttpClient _httpClient;

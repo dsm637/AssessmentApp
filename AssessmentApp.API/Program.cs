@@ -14,12 +14,12 @@ namespace AssessmentApp.API
 
             builder.Services.AddHttpClient();
 
-            builder.Services.AddTransient<NpsApiClient>(sp => new NpsApiClient(
+            builder.Services.AddTransient<INpsApiClient>(sp => new NpsApiClient(
                 sp.GetRequiredService<IHttpClientFactory>().CreateClient(),
                 sp.GetRequiredService<ILogger<NpsApiClient>>(),
                 sp.GetRequiredService<IConfiguration>()
                 ));
-            builder.Services.AddTransient<GeoLocationApiClient>(sp => new GeoLocationApiClient(
+            builder.Services.AddTransient<IGeoLocationApiClient>(sp => new GeoLocationApiClient(
                 sp.GetRequiredService<IHttpClientFactory>().CreateClient(),
                 sp.GetRequiredService<ILogger<GeoLocationApiClient>>(),
                 sp.GetRequiredService<IConfiguration>()

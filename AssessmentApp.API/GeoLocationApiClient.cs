@@ -3,7 +3,7 @@
     /// <summary>
     /// An Api Ninja wrapper class.
     /// </summary>
-    public sealed class GeoLocationApiClient
+    public sealed class GeoLocationApiClient : IGeoLocationApiClient
     {
         private readonly string _apiKey;
         private readonly HttpClient _httpClient;

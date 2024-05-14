@@ -74,10 +74,10 @@ namespace AssessmentApp.API.Controllers
         });
 
         private readonly ILogger<ParksController> _logger;
-        private readonly NpsApiClient _npsApiClient;
-        private readonly GeoLocationApiClient _geoApiClient;
+        private readonly INpsApiClient _npsApiClient;
+        private readonly IGeoLocationApiClient _geoApiClient;
 
-        public ParksController(NpsApiClient npsApiClient, GeoLocationApiClient geoApiClient, ILogger<ParksController> logger)
+        public ParksController(INpsApiClient npsApiClient, IGeoLocationApiClient geoApiClient, ILogger<ParksController> logger)
         {
             _logger = logger;
             _npsApiClient = npsApiClient;
