@@ -1,5 +1,8 @@
 ﻿namespace AssessmentApp.API
 {
+    /// <summary>
+    /// An Api Ninja wrapper class.
+    /// </summary>
     public sealed class GeoLocationApiClient
     {
         private const string ApiKey = "kG3mOf7nK1Mxc3enWfRwHA==hhP3032rTRGKEQwl";

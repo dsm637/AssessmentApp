@@ -1,5 +1,8 @@
 ﻿namespace AssessmentApp.API
 {
+    /// <summary>
+    /// A National Park System Api wrapper class.
+    /// </summary>
     public sealed class NpsApiClient
     {
         private const string ApiKey = "zdNFN0io4o8airhiCo3j2rnyoULuEUAjfK6cLtPC";

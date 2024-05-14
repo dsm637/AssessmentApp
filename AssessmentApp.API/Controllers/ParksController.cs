@@ -4,6 +4,15 @@ using System.Text.Json;
 
 namespace AssessmentApp.API.Controllers
 {
+    /// <summary>
+    /// DTO for the parks Web API.
+    /// </summary>
+    /// <param name="Code">National park 4-letter code.</param>
+    /// <param name="Name">National park name.</param>
+    /// <param name="Url">National park url.</param>
+    /// <param name="Description">National park description.</param>
+    /// <param name="Location">National park coordinates.</param>
+    /// <param name="Distance">Distance from the national park to the client's city.</param>
     public record ParkData(string Code, string Name, string Url, string Description, GeoCoordinate Location, double Distance);
 
     [ApiController]
@@ -75,6 +84,12 @@ namespace AssessmentApp.API.Controllers
             _geoApiClient = geoApiClient;
         }
 
+        /// <summary>
+        /// By city and state find the nearest 3 national parks.
+        /// </summary>
+        /// <param name="city">US city name.</param>
+        /// <param name="stateCode">2-letter US state code.</param>
+        /// <returns>List of 3 ParkData objects.</returns>
         [HttpGet(Name = "GetParks")]
         public async Task<IActionResult> Get(string city, string stateCode)
         {

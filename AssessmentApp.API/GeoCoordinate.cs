@@ -1,5 +1,8 @@
 ﻿namespace AssessmentApp.API
 {
+    /// <summary>
+    /// Auxiliary structure to contains geographic coordinates and calculate the distance between two locations.
+    /// </summary>
     public struct GeoCoordinate
     {
         public double Latitude { get; }
