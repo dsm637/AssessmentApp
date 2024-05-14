@@ -106,11 +106,18 @@ namespace AssessmentApp.API.Controllers
                 return BadRequest($"State is incorrect: {stateCode}");
             }
 
+            var cts = new CancellationTokenSource();
+            cts.CancelAfter(TimeSpan.FromSeconds(10));
+
+            // Getting city coordinates through geolocation API
+            var cityLocationTask = _geoApiClient.GetCityLocation(city, cts.Token);
+            var parksTask = _npsApiClient.GetParks(stateCode, cts.Token);
+
             try
             {
-                // Getting city coordinates through geolocation API
-                HttpResponseMessage cityLocationResponse = await _geoApiClient.GetCityLocation(city, CancellationToken.None);
-                HttpResponseMessage parksResponse = await _npsApiClient.GetParks(stateCode, CancellationToken.None);
+                await Task.WhenAll(cityLocationTask, parksTask);
+                HttpResponseMessage cityLocationResponse = await cityLocationTask;
+                HttpResponseMessage parksResponse = await parksTask;
 
                 GeoCoordinate cityCoordinate;
                 {
@@ -184,6 +191,11 @@ namespace AssessmentApp.API.Controllers
                     _logger.LogInformation("Park data retrieved succesfully");
                     return new ObjectResult(result) { StatusCode = 200, };
                 }
+            }
+            catch(OperationCanceledException oce) 
+            {
+                _logger.LogError(oce, "API call was cancelled.");
+                return StatusCode(500, "An unexpected error occured."); // Calling external API has failed, nothing can be done.
             }
             catch (Exception ex)
             {
