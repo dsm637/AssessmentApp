@@ -150,7 +150,7 @@ namespace AssessmentApp.API.Controllers
                     if (!parksResponse.IsSuccessStatusCode)
                     {
                         // TODO: We might want to add additional checking for other status codes like 429 for rate limiting
-                        // Check status code and inform user. For simplicity, return 400 here
+                        // Check status code and inform user. For simplicity, return 500 here
                         _logger.LogError($"Unable to parks list for {stateCode}. Error while calling NPS API: {parksResponse.StatusCode}");
                         return StatusCode(500, "An error has occured"); // Calling external API has failed, nothing can be done.
                     }
