@@ -1,7 +1,4 @@
-
-using Assessment.Controllers;
-
-namespace Assessment
+namespace AssessmentApp.API
 {
     public class Program
     {
@@ -19,9 +16,9 @@ namespace Assessment
                 sp.GetRequiredService<IHttpClientFactory>().CreateClient(),
                 sp.GetRequiredService<ILogger<NpsApiClient>>()
                 ));
-            builder.Services.AddTransient<GeoLocationClient>(sp => new GeoLocationClient(
+            builder.Services.AddTransient<GeoLocationApiClient>(sp => new GeoLocationApiClient(
                 sp.GetRequiredService<IHttpClientFactory>().CreateClient(),
-                sp.GetRequiredService<ILogger<GeoLocationClient>>()
+                sp.GetRequiredService<ILogger<GeoLocationApiClient>>()
                 ));
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

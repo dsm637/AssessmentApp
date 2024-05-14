@@ -2,7 +2,7 @@ using System.Text.Json;
 
 namespace TestProject1
 {
-    public class UnitTest1
+    public class JsonSerializationTests
     {
         private const string Cities = @"[
   {
@@ -5444,7 +5444,7 @@ namespace TestProject1
 }";
 
         [Fact]
-        public void Test1()
+        public void ParseCoordinates()
         {
             JsonDocument jd = JsonDocument.Parse(Cities);
             JsonElement root = jd.RootElement;
