@@ -14,16 +14,18 @@ namespace AssessmentApp.API
 
             builder.Services.AddHttpClient();
 
-            builder.Services.AddTransient<INpsApiClient>(sp => new NpsApiClient(
-                sp.GetRequiredService<IHttpClientFactory>().CreateClient(),
-                sp.GetRequiredService<ILogger<NpsApiClient>>(),
-                sp.GetRequiredService<IConfiguration>()
-                ));
-            builder.Services.AddTransient<IGeoLocationApiClient>(sp => new GeoLocationApiClient(
-                sp.GetRequiredService<IHttpClientFactory>().CreateClient(),
-                sp.GetRequiredService<ILogger<GeoLocationApiClient>>(),
-                sp.GetRequiredService<IConfiguration>()
-                ));
+            //builder.Services.AddTransient<INpsApiClient>(sp => new NpsApiClient(
+            //    sp.GetRequiredService<IHttpClientFactory>().CreateClient(),
+            //    sp.GetRequiredService<ILogger<NpsApiClient>>(),
+            //    sp.GetRequiredService<IConfiguration>()
+            //    ));
+            //builder.Services.AddTransient<IGeoLocationApiClient>(sp => new GeoLocationApiClient(
+            //    sp.GetRequiredService<IHttpClientFactory>().CreateClient(),
+            //    sp.GetRequiredService<ILogger<GeoLocationApiClient>>(),
+            //    sp.GetRequiredService<IConfiguration>()
+            //    ));
+            builder.Services.AddTransient<IGeoLocationApiClient>(sp => new FakeGeoLocClient());
+            builder.Services.AddTransient<INpsApiClient>(sp => new FakeNpsClient());
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
