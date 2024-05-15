@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.ObjectModel;
 using System.Text.Json;
 
 namespace AssessmentApp.API.Controllers
 {
+    public record ParkRequest(string city, string stateCode);
+
     /// <summary>
     /// DTO for the parks Web API.
     /// </summary>
@@ -83,6 +86,15 @@ namespace AssessmentApp.API.Controllers
             _npsApiClient = npsApiClient;
             _geoApiClient = geoApiClient;
         }
+
+        /// <summary>
+        /// By city and state find the nearest 3 national parks.
+        /// </summary>
+        /// <param name="parkRequest">A ParkRequest instance containing city name and 2-letter state code</param>
+        /// <returns>List of 3 ParkData objects.</returns>
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Post([FromBody] ParkRequest parkRequest) => await Get(parkRequest.city, parkRequest.stateCode);
 
         /// <summary>
         /// By city and state find the nearest 3 national parks.
