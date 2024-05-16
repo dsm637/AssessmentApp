@@ -32,6 +32,13 @@ namespace AssessmentApp.API
                     };
                 });
 
+            builder.Services.AddAuthorization(opt =>
+            {
+                opt.AddPolicy("testpolicy", p =>
+                {
+                    p.RequireClaim("test-policy-claim", "test-value");
+                });
+            });
             // Add services to the container.
 
             builder.Services.AddControllers();

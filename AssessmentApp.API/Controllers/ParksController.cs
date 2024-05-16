@@ -92,7 +92,7 @@ namespace AssessmentApp.API.Controllers
         /// </summary>
         /// <param name="parkRequest">A ParkRequest instance containing city name and 2-letter state code</param>
         /// <returns>List of 3 ParkData objects.</returns>
-        [Authorize]
+        [Authorize(Policy = "testpolicy")]
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] ParkRequest parkRequest) => await Get(parkRequest.city, parkRequest.stateCode);
 
