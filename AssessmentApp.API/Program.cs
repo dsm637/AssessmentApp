@@ -1,3 +1,6 @@
+using AssessmentApp.API.Data;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AssessmentApp.API
@@ -29,6 +32,13 @@ namespace AssessmentApp.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            builder.Services.AddDbContext<DataContext>(opt => opt.UseSqlite("Data Source=assessment.db"));
+
+            builder.Services.AddAuthorization();
+
+            builder.Services.AddIdentityApiEndpoints<IdentityUser>()
+                .AddEntityFrameworkStores<DataContext>();
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -37,6 +47,8 @@ namespace AssessmentApp.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.MapIdentityApi<IdentityUser>();
 
             app.UseHttpsRedirection();
 
