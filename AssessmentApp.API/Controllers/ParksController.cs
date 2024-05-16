@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.ObjectModel;
 using System.Text.Json;
 
@@ -90,6 +91,7 @@ namespace AssessmentApp.API.Controllers
         /// <param name="city">US city name.</param>
         /// <param name="stateCode">2-letter US state code.</param>
         /// <returns>List of 3 ParkData objects.</returns>
+        [Authorize]
         [HttpGet(Name = "GetParks")]
         public async Task<IActionResult> Get(string city, string stateCode)
         {
